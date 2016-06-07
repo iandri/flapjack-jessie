@@ -44,8 +44,11 @@ then
 	# echo "Setting paths"
 	if [ ! -e /etc/profile.d/flapjack.sh ] ; then
 		cat > /etc/profile.d/flapjack.sh <<'EOF'
-		PATH=$PATH:/opt/flapjack/bin
-		GEM_PATH=/opt/flapjack/vendor/bundle/ruby/*/
+PATH=$PATH:/opt/flapjack/bin
+if [ "`/usr/bin/id -un`" = "flapjack" ]; then
+	GEM_PATH=/opt/flapjack/vendor/bundle/ruby/*/
+	umask 012
+fi
 EOF
 		chmod 644 /etc/profile.d/flapjack.sh
 	fi

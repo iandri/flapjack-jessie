@@ -1,6 +1,6 @@
 Package: flapjack
-Version: 2.0.0
+Version: 1.6.0
 Architecture: amd64
-Depends: debhelper (>= 9.0.0~), config-package-dev (>= 5.1), ruby (>= 2.1), redis-server (>=3.1)
+Depends: debhelper (>= 9.0.0~), config-package-dev (>= 5.1), ruby (>= 2.1), redis-server (>=3.1), bundler (>= 1.7)
 Maintainer: Ionut Andriescu <ionutz.andriescu@gmail.com>
 Description: Monitoring notification routing + event processing system.
