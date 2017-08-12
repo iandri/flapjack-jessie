@@ -1,5 +1,12 @@
 #!/bin/sh
 
+
+if [ "$1" = "remove" ] ; then
+	if [ -f /etc/init.d/flapjack ]; then
+		/etc/init.d/flapjack stop || kill -9 `cat /run/flapjack/flapjack.pid`
+	fi
+fi
+
 if [ -x "/etc/init.d/flapjack" ] || [ -e "/etc/init/flapjack.conf" ]; then
 	invoke-rc.d flapjack stop || exit $?
         unlink /usr/local/lib/flapjackfeeder.o

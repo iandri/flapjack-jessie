@@ -3,8 +3,12 @@
 set -e
 
 if [ "$1" = "remove" ] ; then
-	/etc/init.d/flapjack stop || kill -9 `cat /run/flapjack/flapjack.pid`
-	gpasswd -d redis flapjack
+	if [ -f /etc/init.d/flapjack ]; then
+		/etc/init.d/flapjack stop || kill -9 `cat /run/flapjack/flapjack.pid`
+	fi
+	if [ $(getent group flapjack) ]; then
+		gpasswd -d redis flapjack
+	fi
 	userdel flapjack || true
 	update-rc.d flapjack remove >/dev/null
 	rm -f /etc/redis/redis.conf

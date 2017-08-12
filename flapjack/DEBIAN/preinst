@@ -9,3 +9,7 @@ if [ -f /etc/redis/redis.conf ]
 then
 	dpkg-divert --add --rename --divert /etc/redis/redis.conf.disabled /etc/redis/redis.conf
 fi
+
+if [ ! -d /var/log/flapjack ]; then
+	mkdir /var/log/flapjack
+fi

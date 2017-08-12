@@ -26,7 +26,6 @@ RUNDIR=/var/run/flapjack
 PIDFILE=$RUNDIR/$NAME.pid
 
 test -x $DAEMON || exit 0
-
 set -e
 
 case "$1" in
@@ -36,7 +35,7 @@ case "$1" in
     touch $PIDFILE
     chown flapjack:flapjack $RUNDIR $PIDFILE
     chmod 755 $RUNDIR
-    if start-stop-daemon --start --background --quiet --umask 022 --make-pidfile --pidfile $PIDFILE --chuid flapjack:flapjack --startas $DAEMON --exec $DAEMON -- $DAEMON_ARGS
+    if start-stop-daemon --start --background --quiet --umask 022 --make-pidfile --pidfile $PIDFILE --startas $DAEMON --exec $DAEMON -- $DAEMON_ARGS
     then
       echo "$NAME."
     else
